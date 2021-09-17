@@ -2,9 +2,6 @@ package com.example.player_restsrvc.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-
-
-
 @Getter
 @Setter
 public class Player {
