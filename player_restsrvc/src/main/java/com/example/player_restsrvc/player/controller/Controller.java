@@ -14,30 +14,30 @@ public class Controller {
     private PlayerService playerService;
 
     //GET
-    @RequestMapping (value = "/players", method = RequestMethod.GET)
+    @GetMapping (value = "/players")
     public List<Player> getPlayers(){
         return playerService.getAllThePlayers();
     }
 
-    @RequestMapping (value = "/players/{id}", method = RequestMethod.GET)
+    @GetMapping (value = "/players/{id}")
     public Player getPlayerById(@PathVariable int id){
         return playerService.getPlayer(id);
     }
 
     //POST
-    @RequestMapping (value = "/players/save", method = RequestMethod.POST)
+    @PostMapping (value = "/players/save")
     public void savePlayer(@RequestBody Player player){
         playerService.savePlayer(player);
     }
 
     //PUT
 
-    @RequestMapping (value = "/players/update", method = RequestMethod.PUT)
+    @PutMapping (value = "/players/update")
     public void updatePlayer(@RequestBody Player player){
         playerService.updatePlayer(player);
     }
 
-    @RequestMapping (value = "/players/delete", method = RequestMethod.DELETE)
+    @DeleteMapping (value = "/players/delete")
     public void deletePlayer(int id){
         playerService.deletePlayer(id);
     }
