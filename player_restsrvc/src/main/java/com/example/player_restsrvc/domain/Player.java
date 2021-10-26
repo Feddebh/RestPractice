@@ -1,16 +1,15 @@
 package com.example.player_restsrvc.domain;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Player {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String playerName;
 
-    public Player(Integer id, String playerName) {
-        this.id = id;
-        this.playerName = playerName;
-    }
+    private String name;
 }

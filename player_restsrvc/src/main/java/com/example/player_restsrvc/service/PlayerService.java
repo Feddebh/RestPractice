@@ -9,12 +9,6 @@ public class PlayerService {
     List<Player> list = new ArrayList<>();
     public PlayerService() {
         System.out.println("Service layer has been created.");
-        list.add(new Player(1, "Kamero"));
-        list.add(new Player(2, "Pakin"));
-        list.add(new Player(3, "Miguel"));
-        list.add(new Player(4, "Christian"));
-        list.add(new Player(5, "Kike"));
-        list.add(new Player(6, "Barrientos"));
     }
 //Return all the players
         public List<Player> getAllThePlayers(){
@@ -43,8 +37,12 @@ public class PlayerService {
         }
 
         public void deletePlayer(int id){
-            list.remove(id);
-            }
+         try {
+             list.remove(id);
+         } catch (Exception e) {
+             System.out.println("Fallo!!");
+         }
+        }
     }
 
 
