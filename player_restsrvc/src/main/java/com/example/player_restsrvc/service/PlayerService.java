@@ -1,44 +1,44 @@
 package com.example.player_restsrvc.service;
 import com.example.player_restsrvc.domain.Player;
+import com.example.player_restsrvc.repository.PlayersRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @org.springframework.stereotype.Service
 
 public class PlayerService {
-    List<Player> list = new ArrayList<>();
+    @Autowired
+    private PlayersRepository repository;
+
+
     public PlayerService() {
         System.out.println("Service layer has been created.");
     }
 //Return all the players
         public List<Player> getAllThePlayers(){
-            return list;
+            return (List<Player>) repository.findAll();
+
         }
 //Return a Single Player
         public Player getPlayer(int id){
-            for (Player p : list) {
-                if (p.getId() == id) {
-                    return p;
-                }
-            }
-            return null;
+           return repository.findById(id).get();
         }
 
         public void savePlayer(Player player){
-        this.list.add(player);
+        repository.save(player);
         }
 
         public void updatePlayer(Player player) {
-            for (Player p : list) {
-                if (p.getId() == player.getId()) {
-                    p.setPlayerName(player.getPlayerName());
-                }
+            if (repository.findById(player.getId())!=null) {
+                repository.save(player);
             }
         }
 
         public void deletePlayer(int id){
          try {
-             list.remove(id);
+             repository.deleteById(id);
          } catch (Exception e) {
              System.out.println("Fallo!!");
          }
